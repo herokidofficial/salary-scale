@@ -1,0 +1,2 @@
+# salary-scale
+Salary Calculator
