@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+.rwd-table {
+  margin: 1em 0;
+  min-width: 300px;
+}
+.rwd-table tr {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+.rwd-table th {
+  display: none;
+}
+.rwd-table td {
+  display: block;
+}
+.rwd-table td:first-child {
+  padding-top: .5em;
+}
+.rwd-table td:last-child {
+  padding-bottom: .5em;
+}
+
+
+.rwd-table th, .rwd-table td {
+  text-align: left;
+}
+  .rwd-table th:first-child, .rwd-table td:first-child {
+    padding-left: 0;
+  }
+  .rwd-table th:last-child, .rwd-table td:last-child {
+    padding-right: 0;
+  }
+
+
+body {
+  padding: 0 2em;
+ 
+}
+
+h1 {
+  font-weight: normal;
+  letter-spacing: -1px;
+  color: #34495E;
+}
+
+.rwd-table {
+  background: #34495E;
+  color: #fff;
+  border-radius: .4em;
+  overflow: hidden;
+}
+.rwd-table tr {
+  border-color: #46637f;
+}
+.rwd-table th, .rwd-table td {
+  margin: .5em 1em;
+}
+.rwd-table th, .rwd-table td:before {
+  color: #dd5;
+}
+.input_form{
+    height: 35px;
+    width: 250px;
+    border-radius: 4px;
+    border: 1px solid gray;
+}
+.action{
+    color: #fff;
+    background: #4aaee7;
+    width: 80px;
+    height: 30px;
+    border: none;
+}
+        </style>
+    </head>
+    <body>
+        <div>
+            <h3>Employee Level</h3>
+            <select id="value" class="input_form">
+                <option value="1">Intern</option>
+                <option value="2">Associate</option>
+                <option value="3">Manager</option>
+                <option value="4">Executive</option>
+                <option value="5">Directors</option>
+            </select>
+            
+            <input type="button" class="action" value="Calculate" id="action">
+        </div>
+        <table class="rwd-table">
+  <tr>
+    <th>Salary</th>
+    
+    <th>Gross Amount</th>
+  </tr>
+  <tr>
+    <td >Basic Salary</td>
+    <td  id="basic">0</td>
+  </tr>
+  <tr>
+    <td >Housing Allowance</td>
+    <td  id="housing">0</td>
+  </tr>
+  <tr>
+    <td >Transport Allowance</td>
+    <td id="transport">0</td>
+  </tr>
+    <tr>
+    <td>Feeding Allowance</td>
+    <td  id="feeding">0</td>
+  </tr>
+   <tr>
+    <td>Total Earnings</td>
+    <td  id="total_earning">0</td>
+  </tr>
+</table>
+        
+  <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="index.js"></script>
+        <script>
+          $(document).ready(function(){
+              $("#action").on("click",function(){
+                  var val = $("#value").val();
+                  var emp = new EmployeeSalary(val);
+                  $("#basic").html(emp.getSalary());
+                  $("#feeding").html(emp.getFeedingAlawance());
+                  $("#housing").html(emp.getHousingAlawance());
+                  $("#transport").html(emp.getTransportAlawance());
+                  $("#total_earning").html(emp.total());
+              });
+          })
+        </script>
+    </body>
+</html>
